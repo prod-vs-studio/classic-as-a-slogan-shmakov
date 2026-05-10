@@ -1,20 +1,14 @@
 import { defineConfig } from 'vite'
-import path from "path";
-import { fileURLToPath } from "url";
-import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
-import { viteSingleFile } from "vite-plugin-singlefile";
+import react from '@vitejs/plugin-react'
+import path from "path"
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// https://vite.dev/config/
 export default defineConfig({
-  base: './',
-  plugins: [react(), tailwindcss(), viteSingleFile()],
+  // base: './' критически важен для правильных путей к картинкам и стилям
+  base: './', 
+  plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-});
+})
